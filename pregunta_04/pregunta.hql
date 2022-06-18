@@ -47,8 +47,17 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 
 SELECT explode(c5) as letra FROM tbl0;
 
+CREATE TABLE letter
+AS 
+    SELECT letra 
+    FROM 
+    (SELECT explode(c5) as letra FROM tbl0)
+ORDER BY letra;
+
+
+
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     SELECT distinct(letra)
     FROM 
-        (SELECT explode(c5) as letra FROM tbl0);
+        letter;
