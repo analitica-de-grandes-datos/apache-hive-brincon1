@@ -23,5 +23,5 @@ INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 SELECT * FROM docs
 ORDER BY
-    letra asc, fecha asc, numero asc;
+    letra asc, numero asc, fechas asc;
 
