@@ -51,7 +51,7 @@ CREATE TABLE letter
 AS 
     SELECT letra 
     FROM 
-    (SELECT explode(c5) as letra FROM tbl0)
+    (SELECT explode(c5) as letra FROM tbl0)w
 ORDER BY letra;
 
 
