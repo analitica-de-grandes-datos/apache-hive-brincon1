@@ -22,6 +22,6 @@ LOAD DATA LOCAL INPATH "data.tsv" OVERWRITE INTO TABLE docs;
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 SELECT * FROM docs
-ORDER BY
-    letra, numero;
+SORT BY
+    letra asc, numero asc;
 
