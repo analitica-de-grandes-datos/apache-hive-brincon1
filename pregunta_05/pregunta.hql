@@ -58,5 +58,7 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     SELECT date, letra, count(1) as count
     FROM 
         count_fecha
+    GROUP BY
+        date, letra
     ORDER BY
          date asc, letra asc, count asc;
