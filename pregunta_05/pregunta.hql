@@ -59,6 +59,6 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     FROM 
         count_fecha
     GROUP BY
-        date, letra
+        anno, letra
     ORDER BY
          anno asc, letra asc, count asc;
