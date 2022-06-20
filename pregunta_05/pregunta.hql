@@ -47,7 +47,7 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 
 CREATE TABLE count_fecha
 AS 
-    SELECT (year(c4)) date, letra 
+    SELECT (year(c4)) anno, letra 
     FROM 
     tbl0
 LATERAL VIEW
@@ -55,10 +55,10 @@ explode(c5) listaLetras AS letra;
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT date, letra, count(1) as count
+    SELECT anno, letra, count(1) as count
     FROM 
         count_fecha
     GROUP BY
         date, letra
     ORDER BY
-         date asc, letra asc, count asc;
+         anno asc, letra asc, count asc;
