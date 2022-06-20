@@ -47,7 +47,7 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 
 CREATE TABLE count_fecha
 AS 
-    SELECT year(c4), c5 
+    SELECT year(c4), t0 
     FROM 
     tbl0
 LATERAL VIEW
