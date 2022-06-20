@@ -51,7 +51,7 @@ AS
     FROM 
     tbl0
 LATERAL VIEW
-explode(c5) tbl0 AS t0
+explode(c5) AS t0
 ORDER BY date;
 
 SELECT * FROM count_fecha;
