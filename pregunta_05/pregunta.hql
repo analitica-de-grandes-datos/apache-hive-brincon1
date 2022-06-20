@@ -59,4 +59,4 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     FROM 
         count_fecha
     ORDER BY
-         year asc, letras asc, count asc;
+         year asc, letra asc, count asc;
