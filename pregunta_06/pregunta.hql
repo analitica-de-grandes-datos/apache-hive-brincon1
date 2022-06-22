@@ -46,11 +46,14 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
-SELECT UPPER(c5) FROM tbl0;
+CREATE TABLE count_fecha
+AS
+    SELECT transform(c5) using '/bin/cat' as (my_int_array) FROM tbl0;
+
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT UPPER(c5)
+    SELECT UPPER(my_int_array)
     FROM 
-        tbl0;
+        count_fecha;
 
