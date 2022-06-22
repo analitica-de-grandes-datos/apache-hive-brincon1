@@ -50,7 +50,6 @@ CREATE TABLE cadena
 AS
    SELECT transform(c5) using '/bin/cat' as (my_str) FROM tbl0;
    
-SELECT * FROM cadena;
     
 CREATE TABLE cadenaSola
 AS
@@ -59,8 +58,9 @@ AS
     from
         cadena;
 
-
-select * from cadenaSola;
-
-
+INSERT OVERWRITE DIRECTORY 'output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    SELECT regexp_replace(final_str,'\\,','\\:')
+    FROM 
+        cadenaSola;
 
