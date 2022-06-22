@@ -57,10 +57,18 @@ AS
         UPPER(regexp_replace(my_str,'\\[|\\]','')) as final_str
     from
         cadena;
+        
+CREATE TABLE comillas
+AS
+  select
+        regexp_replace(final_str,'\\"','')) as final
+    from
+        cadenaSola;  
+        
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT regexp_replace(final_str,'\\,','\\:')
+    SELECT regexp_replace(final,'\\,','\\:')
     FROM 
-        cadenaSola;
+        comillas;
 
