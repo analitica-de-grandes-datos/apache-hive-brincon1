@@ -52,6 +52,6 @@ AS
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT UPPER(CAST(explode(my_int_array AS STRING)))
+    SELECT UPPER(CAST(my_int_array AS STRING))
     FROM 
         count_fecha;
