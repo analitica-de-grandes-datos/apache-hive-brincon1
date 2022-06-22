@@ -46,19 +46,20 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
-CREATE TABLE mayuscula
+CREATE TABLE cadena
 AS
     select
         regexp_replace(my_str,'\\[|\\]','') as final_str
     from
     (
         SELECT transform(c5) using '/bin/cat' as (my_str) FROM tbl0
-    );
+    ;
 
+select * from cadena;
 
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT UPPER(regexp_replace(final_str,',',':'))
+    SELECT UPPER(regexp_replace(final_str,'\\,','\\:'))
     FROM 
-        mayuscula;
+        cadena;
