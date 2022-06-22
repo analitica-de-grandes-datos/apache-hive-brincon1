@@ -48,14 +48,19 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 
 CREATE TABLE cadena
 AS
-    select
+   SELECT transform(c5) using '/bin/cat' as (my_str) FROM tbl0;
+   
+SELECT * FROM cadena;
+    
+CREATE TABLE cadenaSola
+AS
+  select
         regexp_replace(my_str,'\\[|\\]','') as final_str
     from
-    (
-        SELECT transform(c5) using '/bin/cat' as (my_str) FROM tbl0)
-    ;
+        cadenaSola;
 
-select * from cadena;
+
+select * from cadenaSola;
 
 
 
