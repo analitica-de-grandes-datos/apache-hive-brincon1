@@ -58,8 +58,4 @@ AS
 select * from cadena;
 
 
-INSERT OVERWRITE DIRECTORY 'output'
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT UPPER(regexp_replace(final_str,'\\,','\\:'))
-    FROM 
-        cadena;
+
