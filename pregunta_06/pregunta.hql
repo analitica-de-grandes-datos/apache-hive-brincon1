@@ -52,8 +52,8 @@ AS
         regexp_replace(my_str,'\\[|\\]','') as final_str
     from
     (
-        SELECT transform(c5) using '/bin/cat' as (my_str) FROM tbl0;
-    )
+        SELECT transform(c5) using '/bin/cat' as (my_str) FROM tbl0
+    );
 
 
 
