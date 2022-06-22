@@ -50,10 +50,8 @@ CREATE TABLE count_fecha
 AS
     SELECT transform(c5) using '/bin/cat' as (my_int_array) FROM tbl0;
 
-
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT UPPER(my_int_array)
+    SELECT UPPER(concat_ws(':',collect_set(my_int_array)))
     FROM 
         count_fecha;
-
