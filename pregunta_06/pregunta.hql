@@ -59,6 +59,6 @@ AS
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT UPPER(regexp_replace(final_str,"\\,","\\:"))
+    SELECT UPPER(regexp_replace(final_str,'\\,', ':'))
     FROM 
         mayuscula;
