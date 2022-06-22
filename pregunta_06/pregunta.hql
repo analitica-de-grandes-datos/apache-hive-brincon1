@@ -65,10 +65,5 @@ AS
     from
         cadenaSola;  
         
-
-INSERT OVERWRITE DIRECTORY 'output'
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT regexp_replace(final,'\\,','\\:')
-    FROM 
-        comillas;
+select * from cadenaSola;
 
