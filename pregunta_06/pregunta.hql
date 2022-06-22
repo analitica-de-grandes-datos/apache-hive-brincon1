@@ -46,12 +46,19 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
-CREATE TABLE count_fecha
+CREATE TABLE mayuscula
 AS
-    SELECT transform(c5) using '/bin/cat' as (my_int_array) FROM tbl0;
+    select
+        regexp_replace(my_str,'\\[|\\]','') as final_str
+    from
+    (
+        SELECT transform(c5) using '/bin/cat' as (my_str) FROM tbl0;
+    )
+
+
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT UPPER(CAST(my_int_array AS STRING))
+    SELECT UPPER(regexp_replace(final_str,"\\,","\\:"))
     FROM 
-        count_fecha;
+        mayuscula;
