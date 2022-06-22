@@ -55,9 +55,9 @@ SELECT * FROM cadena;
 CREATE TABLE cadenaSola
 AS
   select
-        regexp_replace(my_str,'\\[|\\]','') as final_str
+        UPPER(regexp_replace(my_str,'\\[|\\]','')) as final_str
     from
-        cadenaSola;
+        cadena;
 
 
 select * from cadenaSola;
