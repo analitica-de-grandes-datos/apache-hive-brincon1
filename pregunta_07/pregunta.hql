@@ -65,17 +65,11 @@ select * from cadena;
 
 CREATE TABLE union
 AS
-SELECT
-    d.c2,
-    t.final_str
-FROM
-    tbl0 d
-JOIN (
     SELECT
-        final_str,
+        tbl0.c2,
+        cadena.final_str
     FROM
-        cadena
-    ) t;
+        tbl0, cadena;
 
 SELECT *  FROM union;
 
