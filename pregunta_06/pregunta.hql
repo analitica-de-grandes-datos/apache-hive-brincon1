@@ -61,7 +61,7 @@ AS
 CREATE TABLE comillas
 AS
   select
-        regexp_replace(final_str,'\\\"\','') as final
+        regexp_replace(final_str,'\\"|\\"','') as final
     from
         cadenaSola;  
         
