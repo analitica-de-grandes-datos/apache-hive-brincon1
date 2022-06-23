@@ -51,13 +51,34 @@ AS
     FROM tbl0
     GROUP BY c2;   
 
-select * from list;    
-describe list;
-select c2 from list;
-
 CREATE TABLE reemplazo
 AS
     SELECT transform(lista) using '/bin/cat' as (my_str) FROM list;
 
-select my_str from reemplazo;
-select * from reemplazo;   
+
+CREATE TABLE cadena
+AS
+    SELECT regexp_replace(my_str,'\\[|\\]','') as final_str
+    FROM reemplazo;
+    
+select * from cadena;
+
+CREATE TABLE union
+AS
+SELECT
+    d.c2,
+    t.final_str
+FROM
+    tbl0 d
+JOIN (
+    SELECT
+        final_str,
+    FROM
+        cadena
+    ) t;
+
+SELECT *  FROM union;
+
+
+
+
