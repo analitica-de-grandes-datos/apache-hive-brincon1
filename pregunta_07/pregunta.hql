@@ -51,33 +51,21 @@ AS
     FROM tbl0
     GROUP BY c2;  
 
-SELECT
-       transform(c2, lista) using '/bin/cat' AS letra, my_str
+CREATE TABLE cadena
+AS
+    SELECT
+           transform(c2, lista) using '/bin/cat' AS letra, my_str
     FROM
-        list;
+           list;
 
 CREATE TABLE reemplazo
 AS
-    SELECT c2 as letra, transform(lista) using '/bin/cat' as (my_str) 
-    FROM list;
-
-CREATE TABLE cadena
-AS
-    SELECT regexp_replace(my_str,'\\[|\\]','') as final_str
-    FROM reemplazo;
-
-CREATE TABLE cadenacompleta
-AS
-    SELECT
-        regexp_replace(final_str,'\\,','\\:') as final
-    FROM
-        cadena;
+    SELECT letra, regexp_replace(my_str,'\\[|\\]','') as final_str
+    FROM cadena;
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT * 
-    FROM 
-        (SELECT c2 FROM list 
-        UNION
-        SELECT final FROM cadenacompleta);
-
+    SELECT
+        letra, regexp_replace(final_str,'\\,','\\:') as final
+    FROM
+        reemplazo;
