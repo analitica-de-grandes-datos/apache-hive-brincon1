@@ -53,8 +53,9 @@ AS
 
 CREATE TABLE reemplazo
 AS
-    SELECT transform(lista) using '/bin/cat' as (my_str) FROM list;
+    SELECT c2, transform(lista) using '/bin/cat' as (my_str) FROM list;
 
+select * FROM reemplazo;
 
 CREATE TABLE cadena
 AS
