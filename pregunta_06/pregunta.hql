@@ -64,6 +64,10 @@ AS
         regexp_replace(final_str,'\\"|\\"','') as final
     from
         cadenaSola;  
-        
-select * from comillas;
+
+INSERT OVERWRITE DIRECTORY 'output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    SELECT regexp_replace(final_str,'\\,','\\:')
+    FROM 
+        comillas;
 
