@@ -65,7 +65,7 @@ AS
     SELECT
         regexp_replace(final_str,'\\,','\\:') as final
     FROM
-        cedena;
+        cadena;
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
