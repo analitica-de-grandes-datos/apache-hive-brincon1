@@ -70,7 +70,7 @@ AS
         d.c2,
         c.final_str 
     FROM
-        tbl0 d, cadena c;
+        list d, cadena c;
 
 SELECT *  FROM union;
 
