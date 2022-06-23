@@ -51,6 +51,6 @@ AS
     SELECT c2,c1 
     FROM tbl0
     GROUP BY
-        (distinct(c2)), c1;
+        c2;
         
 SELECT * FROM cadena;
