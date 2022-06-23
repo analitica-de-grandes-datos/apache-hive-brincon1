@@ -47,12 +47,13 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 */
 CREATE TABLE list
 AS
-    SELECT c2, collect_set(c1) as lista
-    FROM tbl0
+    SELECT c2, (transform(lista) using '/bin/cat')my_str
+    FROM (SELECT c2, collect_set(c1) as lista FROM tbl0) table1
     GROUP BY c2;   
 
 select * from list;    
 describe list;
+select my_str FROM list;
 
 CREATE TABLE reemplazo
 AS
