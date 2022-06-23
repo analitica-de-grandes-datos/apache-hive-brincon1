@@ -50,8 +50,8 @@ CREATE TABLE camposUnidos
 AS
 SELECT 
     d.c1 as id_,
-    t.c4 as letra,
-    d.c2 as numero
+    t.c4 as matriz,
+    d.c2 as letra
 FROM
     tbl0 d
 JOIN (
@@ -72,7 +72,7 @@ SELECT
         SELECT
              id_,
              letra,
-             numero[letra] as seleccion
+             matriz[letra] as seleccion
         FROM
             camposUnidos) w;
 
