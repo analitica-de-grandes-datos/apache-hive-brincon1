@@ -46,14 +46,14 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
-CREATE TABLE lista
+CREATE TABLE list
 AS 
-    SELECT c2, collect_set(c1)
+    SELECT c2, collect_set(c1) as lista
     FROM tbl0
     GROUP BY c2;
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT c2, regexp_replace(c1,'\\?','\\:')
-    FROM lista;
+    SELECT c2, regexp_replace(lista,'\\?','\\:')
+    FROM list;
         
