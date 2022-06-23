@@ -46,3 +46,20 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
+INSERT OVERWRITE DIRECTORY 'output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+SELECT 
+    d.c1
+    t.c4
+    d.c2
+FROM
+    tbl0 d
+JOIN
+    (SELECT
+        c1,
+        c4
+     FROM 
+        tbl1)t
+ON
+    (d.c1 = t.c1);
+      
