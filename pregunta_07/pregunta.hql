@@ -52,3 +52,5 @@ AS
     FROM tbl0
     GROUP BY
         distinct(c2), c1;
+        
+SELECT * FROM cadena;
