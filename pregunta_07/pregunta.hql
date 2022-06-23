@@ -53,7 +53,7 @@ AS
 
 CREATE TABLE reemplazo
 AS
-    SELECT c2, regexp_replace(lista, '\\?','\\:') as remp
+    SELECT c2, regexp_replace(lista, '\\,','\\:') as remp
     FROM list
     GROUP BY c2;   
 
