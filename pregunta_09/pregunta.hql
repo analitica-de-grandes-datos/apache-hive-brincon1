@@ -69,10 +69,10 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 SELECT
     id_, letra, seleccion
     FROM (
-    SELECT
-         id_,
-         letra,
-         numero[letra] as seleccion
-    FROM
-        camposUnidos;
-         
+        SELECT
+             id_,
+             letra,
+             numero[letra] as seleccion
+        FROM
+            camposUnidos);
+
