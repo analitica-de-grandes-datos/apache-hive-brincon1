@@ -47,3 +47,6 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
+SELECT c2, map_values(c6) as valores 
+    FROM tbl0;
+
