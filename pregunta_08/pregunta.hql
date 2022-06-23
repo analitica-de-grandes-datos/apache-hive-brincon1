@@ -52,4 +52,20 @@ AS
 SELECT c2, map_values(c6) as val
     FROM tbl0;
 
-SELECT c2, SUM(val) FROM valores;
+CREATE TABLE camposSeparados
+AS 
+    SELECT c2, numeros 
+    FROM 
+    valores
+LATERAL VIEW
+explode(val) listaNumeros AS numeros;
+
+INSERT OVERWRITE DIRECTORY 'output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    SELECT c2, sum(numeros)
+    FROM 
+        camposSeparados
+    GROUP BY
+        c2;
+
+
