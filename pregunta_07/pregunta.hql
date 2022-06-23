@@ -53,6 +53,7 @@ AS
 
 select * from list;    
 describe list;
+select c2 from list;
 select my_str FROM list;
 
 CREATE TABLE reemplazo
