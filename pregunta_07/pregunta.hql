@@ -54,8 +54,8 @@ AS
 CREATE TABLE reemplazo
 AS
     SELECT c2, regexp_replace(lista, '\\?','\\:') as remp
-    FROM tbl0
-    GROUP BY list;   
+    FROM list
+    GROUP BY c2;   
 
     
 select lista from list;
