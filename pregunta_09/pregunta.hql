@@ -59,7 +59,9 @@ JOIN
         c1,
         c4
      FROM 
-        tbl1)t
+        tbl1
+     GROUP BY
+        c1)t
 ON
     (d.c1 = t.c1);
-      
+ 
