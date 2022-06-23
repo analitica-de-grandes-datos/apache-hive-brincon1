@@ -53,7 +53,8 @@ AS
 
 CREATE TABLE reemplazo
 AS
-    SELECT transform(lista) using '/bin/cat' as (my_str) FROM list;
+    SELECT c2 as letra, transform(lista) using '/bin/cat' as (my_str) 
+    FROM list;
 
 CREATE TABLE cadena
 AS
@@ -69,7 +70,7 @@ AS
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT c2, c1 
+    SELECT * 
     FROM 
         (SELECT c2 FROM list 
         UNION
