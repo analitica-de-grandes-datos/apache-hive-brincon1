@@ -46,22 +46,35 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
-INSERT OVERWRITE DIRECTORY 'output'
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+CREATE TABLE camposUnidos
+AS
 SELECT 
-    d.c1
-    t.c4
-    d.c2
+    d.c1 as id_,
+    t.c4 as letra,
+    d.c2 as numero
 FROM
     tbl0 d
-JOIN
-    (SELECT
+JOIN (
+    SELECT
         c1,
         c4
      FROM 
         tbl1
      GROUP BY
-        c1)t
+        c1) t
 ON
     (d.c1 = t.c1);
- 
+
+
+INSERT OVERWRITE DIRECTORY 'output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+SELECT
+    id_, letra, seleccion
+    FROM (
+    SELECT
+         id_,
+         letra,
+         numero[letra] as seleccion
+    FROM
+        camposUnidos;
+         
