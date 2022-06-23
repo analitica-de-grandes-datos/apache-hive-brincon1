@@ -47,25 +47,18 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 */
 CREATE TABLE list
 AS
-    SELECT c2, (transform(lista) using '/bin/cat')my_str
-    FROM (SELECT c2, collect_set(c1) as lista FROM tbl0) table1
+    SELECT c2, collect_set(c1) as lista 
+    FROM tbl0
     GROUP BY c2;   
 
 select * from list;    
 describe list;
 select c2 from list;
-select my_str FROM list;
 
 CREATE TABLE reemplazo
 AS
-    c2, transform(lista) using '/bin/cat' as (my_str)
+    transform(lista) using '/bin/cat' as (my_str)
     FROM list; 
 
-select lista from list;
-select * from reemplazo;
-
-INSERT OVERWRITE DIRECTORY 'output'
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT c2, regexp_replace(collect_set(c1), '\\?','\\:')
-    FROM tbl0
-    GROUP BY c2;     
+select my_str from reemplazo;
+select * from reemplazo;   
