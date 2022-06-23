@@ -57,8 +57,7 @@ select c2 from list;
 
 CREATE TABLE reemplazo
 AS
-    transform(lista) using '/bin/cat' as (my_str)
-    FROM list; 
+    SELECT transform(lista) using '/bin/cat' as (my_str) FROM list;
 
 select my_str from reemplazo;
 select * from reemplazo;   
