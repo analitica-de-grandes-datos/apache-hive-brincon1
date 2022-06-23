@@ -55,23 +55,23 @@ CREATE TABLE reemplazo
 AS
     SELECT transform(lista) using '/bin/cat' as (my_str) FROM list;
 
-select * FROM reemplazo;
-
 CREATE TABLE cadena
 AS
     SELECT regexp_replace(my_str,'\\[|\\]','') as final_str
     FROM reemplazo;
-    
-select * from cadena;
 
-CREATE TABLE union
+CREATE TABLE cadenacompleta
 AS
     SELECT
-        d.c2,
-        c.final_str 
+        regexp_replace(final_str,'\\,','\\:') as final
     FROM
-        list d, cadena c;
+        cedena;
 
-SELECT *  FROM union;
-
+INSERT OVERWRITE DIRECTORY 'output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    SELECT * 
+    FROM 
+        (SELECT b.c2 FROM list b
+        UNION
+        SELECT c.final FROM cadenacompleta c)w;
 
