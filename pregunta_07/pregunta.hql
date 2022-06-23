@@ -49,7 +49,18 @@ CREATE TABLE list
 AS
     SELECT c2, collect_set(c1) as lista 
     FROM tbl0
-    GROUP BY c2;   
+    GROUP BY c2;  
+    
+SELECT
+    c2,
+    my_str
+FROM (
+    SELECT
+        c2,
+       transform(lista) using '/bin/cat' AS (my_str)
+    FROM
+        list
+) table1;
 
 CREATE TABLE reemplazo
 AS
