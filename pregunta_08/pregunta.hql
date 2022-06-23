@@ -52,4 +52,4 @@ AS
 SELECT c2, map_values(c6) as valores 
     FROM tbl0;
 
-SELECT c2, SUM(valores);
+SELECT c2, SUM(valores) FROM values;
