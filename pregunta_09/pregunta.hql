@@ -74,5 +74,5 @@ SELECT
              letra,
              numero[letra] as seleccion
         FROM
-            camposUnidos);
+            camposUnidos) w;
 
