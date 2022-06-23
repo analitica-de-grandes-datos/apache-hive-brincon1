@@ -56,7 +56,7 @@ describe list;
 
 CREATE TABLE reemplazo
 AS
-    SELECT c2, regexp_replace(lista, '\\,','\\:') as remp
+    c2, transform(c5) using '/bin/cat' as (my_str)
     FROM list; 
 
 select lista from list;
