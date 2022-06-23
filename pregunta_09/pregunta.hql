@@ -59,9 +59,7 @@ JOIN (
         c1,
         c4
      FROM 
-        tbl1
-     GROUP BY
-        c1) t
+        tbl1) t
 ON
     (d.c1 = t.c1);
 
