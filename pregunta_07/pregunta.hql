@@ -46,3 +46,9 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
+CREATE TABLE cadena
+AS
+    SELECT c2,c1 
+    FROM tbl0
+    GROUP BY
+        distinct(c2), c1;
