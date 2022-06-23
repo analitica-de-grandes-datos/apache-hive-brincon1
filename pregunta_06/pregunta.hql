@@ -67,7 +67,7 @@ AS
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT regexp_replace(final_str,'\\,','\\:')
+    SELECT regexp_replace(final,'\\,','\\:')
     FROM 
         comillas;
 
