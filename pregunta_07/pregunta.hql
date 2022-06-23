@@ -56,7 +56,7 @@ describe list;
 
 CREATE TABLE reemplazo
 AS
-    c2, transform(c5) using '/bin/cat' as (my_str)
+    c2, transform(c2) using '/bin/cat' as (my_str)
     FROM list; 
 
 select lista from list;
