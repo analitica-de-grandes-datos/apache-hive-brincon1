@@ -53,7 +53,7 @@ AS
 
 CREATE TABLE reemplazo
 AS
-    SELECT c2, transform(lista) using '/bin/cat' as (my_str) FROM list;
+    SELECT transform(lista) using '/bin/cat' as (my_str) FROM list;
 
 select * FROM reemplazo;
 
@@ -67,13 +67,11 @@ select * from cadena;
 CREATE TABLE union
 AS
     SELECT
-        c2,
-        regexp_replace(final_str,'\\[|\\]','')
+        d.c2,
+        c.final_str 
     FROM
-        tbl0, cadena;
+        tbl0 d, cadena c;
 
 SELECT *  FROM union;
-
-
 
 
