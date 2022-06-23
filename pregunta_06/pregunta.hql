@@ -65,5 +65,5 @@ AS
     from
         cadenaSola;  
         
-select * from cadenaSola;
+select * from comillas;
 
