@@ -47,9 +47,9 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
-CREATE TABLE values
+CREATE TABLE valores
 AS
-SELECT c2, map_values(c6) as valores 
+SELECT c2, map_values(c6) as val
     FROM tbl0;
 
-SELECT c2, SUM(valores) FROM values;
+SELECT c2, SUM(val) FROM valores;
