@@ -50,7 +50,8 @@ AS
     SELECT c2, collect_set(c1) as lista
     FROM tbl0
     GROUP BY c2;   
-    
+
+select * from list;    
 describe list;
 
 CREATE TABLE reemplazo
