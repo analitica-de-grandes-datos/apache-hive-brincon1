@@ -60,7 +60,6 @@ AS
     FROM list; 
 
 select lista from list;
-select remp from reemplazo;
 select * from reemplazo;
 
 INSERT OVERWRITE DIRECTORY 'output'
