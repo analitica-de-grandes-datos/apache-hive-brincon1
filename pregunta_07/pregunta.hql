@@ -69,9 +69,9 @@ AS
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT * 
+    SELECT c2, c1 
     FROM 
-        (SELECT b.c2 FROM list b
+        (SELECT c2 FROM list 
         UNION
-        SELECT c.final FROM cadenacompleta c)w;
+        SELECT final FROM cadenacompleta);
 
