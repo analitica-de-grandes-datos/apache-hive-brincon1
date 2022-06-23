@@ -55,5 +55,5 @@ AS
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     SELECT c2, regexp_replace(c1,'\\?','\\:')
-    FROM tbl0;
+    FROM lista;
         
