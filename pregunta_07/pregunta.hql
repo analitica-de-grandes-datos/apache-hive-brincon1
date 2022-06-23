@@ -66,8 +66,8 @@ select * from cadena;
 CREATE TABLE union
 AS
     SELECT
-        tbl0.c2,
-        cadena.final_str
+        c2,
+        regexp_replace(final_str,'\\[|\\]','')
     FROM
         tbl0, cadena;
 
