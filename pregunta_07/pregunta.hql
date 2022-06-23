@@ -50,14 +50,14 @@ AS
     SELECT c2, collect_set(c1) as lista
     FROM tbl0
     GROUP BY c2;   
+    
+describe list;
 
 CREATE TABLE reemplazo
 AS
-    SELECT c2, regexp_replace(lista, '\\,','\\:') as remp
-    FROM list
-    GROUP BY c2;   
+    SELECT regexp_replace(*, '\\,','\\:') as remp
+    FROM list; 
 
-    
 select lista from list;
 select remp from reemplazo;
 select * from reemplazo;
