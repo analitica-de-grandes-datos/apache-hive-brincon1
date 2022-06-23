@@ -50,9 +50,17 @@ AS
     SELECT c2, collect_set(c1) as lista
     FROM tbl0
     GROUP BY c2;   
+
+CREATE TABLE reemplazo
+AS
+    SELECT c2, regexp_replace(lista, '\\?','\\:') as remp
+    FROM tbl0
+    GROUP BY list;   
+
     
 select lista from list;
-select * from list;
+select remp from reemplazo;
+select * from reemplazo;
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
