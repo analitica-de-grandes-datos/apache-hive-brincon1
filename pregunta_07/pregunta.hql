@@ -50,17 +50,11 @@ AS
     SELECT c2, collect_set(c1) as lista 
     FROM tbl0
     GROUP BY c2;  
-    
+
 SELECT
-    c2,
-    my_str
-FROM (
-    SELECT
-        c2,
-       transform(lista) using '/bin/cat' AS (my_str)
+       transform(c2, lista) using '/bin/cat' AS letra, my_str
     FROM
-        list
-) table1;
+        list;
 
 CREATE TABLE reemplazo
 AS
