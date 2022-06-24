@@ -52,4 +52,4 @@ COLLECTION ITEMS TERMINATED BY ':'
     SELECT c2, collect_set(c1) as lista 
     FROM tbl0
     GROUP BY c2
-    ORDER BY c2;  
+    ORDER BY c2 asc, c1 asc;  
