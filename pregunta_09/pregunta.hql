@@ -63,7 +63,6 @@ JOIN (
 ON
     (d.c1 = t.c1);
 
-SELECT * FROM camposUnidos;
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
@@ -73,7 +72,7 @@ SELECT
         SELECT
              id_,
              letra,
-             matriz[letra] as seleccion
+             matriz["letra"] as seleccion
         FROM
             camposUnidos) w;
 
