@@ -51,4 +51,5 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 COLLECTION ITEMS TERMINATED BY ':'
     SELECT c2, collect_set(c1) as lista 
     FROM tbl0
-    GROUP BY c2;  
+    GROUP BY c2
+    ORDER BY c2;  
