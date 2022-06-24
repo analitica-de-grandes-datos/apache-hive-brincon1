@@ -45,27 +45,10 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 /*
     >>> Escriba su respuesta a partir de este punto <<<
 */
-CREATE TABLE list
-AS
-    SELECT c2, collect_set(c1) as lista 
-    FROM tbl0
-    GROUP BY c2;  
-
-CREATE TABLE cadena
-AS
-    SELECT
-           transform(c2, lista) using '/bin/cat' AS letra, my_str
-    FROM
-           list;
-
-CREATE TABLE reemplazo
-AS
-    SELECT letra, regexp_replace(my_str,'\\[|\\]','') as final_str
-    FROM cadena;
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    SELECT
-        letra, regexp_replace(final_str,'\\,','\\:') as final
-    FROM
-        reemplazo;
+COLLECTION ITEMS TERMINATED BY ':'
+    SELECT c2, collect_set(c1) as lista 
+    FROM tbl0
+    GROUP BY c2;  
