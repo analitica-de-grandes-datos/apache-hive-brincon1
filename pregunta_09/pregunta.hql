@@ -46,33 +46,20 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
-CREATE TABLE camposUnidos
+CREATE TABLE tabla0
 AS
 SELECT 
-    d.c1 as id_,
-    t.c4 as matriz,
-    d.c2 as letra
-FROM
-    tbl0 d
-JOIN (
-    SELECT
-        c1,
-        c4
-     FROM 
-        tbl1) t
-ON
-    (d.c1 = t.c1);
+    c1, c2 as key
+    FROM tbl0;
 
+CREATE TABLE tabla1
+AS
+SELECT 
+    c1, key, valor 
+    FROM (SELECT c1, map_keys(c4) as key, map_values(c4) as valor FROM tbl1) w;
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-SELECT
-    id_, letra, seleccion
-    FROM (
-        SELECT
-             id_,
-             letra,
-             matriz["letra"] as seleccion
-        FROM
-            camposUnidos) w;
-
+SELECT d1.* FROM tabla0 d0, tabla1 d1
+WHERE d0.c1=d1.c1 AND d0.key=d1.key;
+ 
