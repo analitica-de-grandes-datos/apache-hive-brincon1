@@ -56,7 +56,8 @@ CREATE TABLE tabla1
 AS
 SELECT 
     c1, key, valor 
-    FROM (SELECT c1, map_keys(c4) as key, map_values(c4) as valor FROM tbl1) w;
+    FROM tbl1
+LATERAL VIEW explode(c4) letra_numer;
 
 INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
