@@ -37,6 +37,6 @@ LOAD DATA LOCAL INPATH 'data.tsv' INTO TABLE t0;
 CREATE TABLE datos AS SELECT letra, key, value FROM (SELECT letra, c3 FROM t0 LATERAL VIEW explode(c2) t0 AS letra ) data_1
 LATERAL VIEW explode (c3) data_1;
 
-INSERT OVERWRITE LOCAL DIRECTORY './output'
+INSERT OVERWRITE LOCAL DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-SELECT letra, key, COUNT(1) FROM datos GROUP BY letra, key ;
+SELECT letra, key, COUNT(1) FROM datos GROUP BY letra, key;
