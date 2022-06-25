@@ -13,4 +13,14 @@ Escriba el resultado a la carpeta `output` de directorio de trabajo.
         >>> Escriba su respuesta a partir de este punto <<<
 */
 
+DROP TABLE IF EXISTS docs;
+CREATE TABLE docs (letra STRING, fecha STRING, numero INT)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
 
+LOAD DATA LOCAL INPATH "data.tsv" OVERWRITE INTO TABLE docs;
+
+INSERT OVERWRITE DIRECTORY 'output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+SELECT * FROM docs
+ORDER BY
+    letra asc, numero asc, fecha asc;

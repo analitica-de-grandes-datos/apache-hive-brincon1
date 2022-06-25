@@ -46,3 +46,15 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
+CREATE TABLE list
+AS
+    SELECT c2, c1 
+    FROM tbl0
+    ORDER BY c2 asc, c1 asc;  
+
+INSERT OVERWRITE DIRECTORY 'output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+COLLECTION ITEMS TERMINATED BY ':'
+    SELECT c2, collect_set(c1) as lista
+    FROM list
+    GROUP BY c2;  

@@ -29,4 +29,23 @@ LOAD DATA LOCAL INPATH 'data.tsv' INTO TABLE t0;
 /*
     >>> Escriba su respuesta a partir de este punto <<<
 */
+CREATE TABLE campos
+AS
+SELECT map_keys(c3) as val
+    FROM t0;
 
+CREATE TABLE separados
+AS 
+    SELECT letras 
+    FROM 
+    campos
+LATERAL VIEW
+explode(val) listaLetras AS letras;
+
+INSERT OVERWRITE DIRECTORY 'output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    SELECT letras, count(1) AS count
+    FROM 
+        separados
+    GROUP BY
+        letras;
