@@ -55,7 +55,7 @@ SELECT
 CREATE TABLE tabla1
 AS
 SELECT 
-    c1, key, valor 
+    c1, key, value
     FROM tbl1
 LATERAL VIEW explode(c4) letra_numer;
 
